@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Ardeiro <Ardeiro@student.42.fr>            +#+  +:+       +#+         #
+#    By: daparici <daparici@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 01:04:09 by Ardeiro           #+#    #+#              #
-#    Updated: 2024/05/17 13:54:38 by Ardeiro          ###   ########.fr        #
+#    Updated: 2024/05/27 17:33:06 by daparici         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SANITIZER		=	-g3 -fsanitize=address -g
 LIBFT			= 	include/libft/libft.a
 LIBFTDIR		= 	include/libft
 OBJ_DIR			=	obj
-RM 				=	/bin/rm -rf
+RM 				=	/bin/rm -rf 
 CC 				= 	gcc
 CFLAGS 			= 	-Wall -Werror -Wextra $(INCLUDE) $(SANITIZER)
 
