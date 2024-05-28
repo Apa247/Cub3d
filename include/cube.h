@@ -3,27 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ardeiro <Ardeiro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daparici <daparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 00:54:00 by Ardeiro           #+#    #+#             */
-/*   Updated: 2024/05/21 00:12:24 by Ardeiro          ###   ########.fr       */
+/*   Updated: 2024/05/28 02:41:30 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  CUBE_H
-# define  CUBE_H
+#ifndef CUBE_H
+# define CUBE_H
 
 # include "stdio.h"
 # include "stdlib.h"
 # include "math.h"
 # include "stdbool.h"
-# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include "libft/libft.h"
 # include <stdint.h>
+# include <X11/Xlib.h>
 
 # define PI 3.14159265359
 
-typedef struct  s_data
+typedef struct s_game
+{
+    void    *mlx;
+    void    *mlx_window;
+    int     win_size_x;
+    int     win_size_y;
+}              t_game;
+
+typedef struct s_data
 {
     int     map_width;
     int     map_height;
@@ -35,7 +44,10 @@ typedef struct  s_data
     char    *west_path;
     char    **map;
     t_list  *file;
+    t_game  *game;
 }               t_data;
+
+
 
 //  File src/main.c
 //static void ft_init_data(t_data *data);

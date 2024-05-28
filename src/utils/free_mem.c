@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_mem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Ardeiro <Ardeiro@student.42.fr>            +#+  +:+       +#+        */
+/*   By: daparici <daparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 01:39:40 by Ardeiro           #+#    #+#             */
-/*   Updated: 2024/05/19 19:20:42 by Ardeiro          ###   ########.fr       */
+/*   Updated: 2024/05/28 03:07:49 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void    ft_free_mem(t_data *data)
 void    ft_exit(t_data *data, char *error)
 {
     perror(error);
+    if (data->game)
+        free(data->game);
     ft_free_mem(data);
     free(data);
     exit(EXIT_FAILURE);

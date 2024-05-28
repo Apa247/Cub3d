@@ -6,7 +6,7 @@
 #    By: daparici <daparici@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 01:04:09 by Ardeiro           #+#    #+#              #
-#    Updated: 2024/05/27 17:33:53 by daparici         ###   ########.fr        #
+#    Updated: 2024/05/27 22:01:32 by daparici         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,14 +40,15 @@ OBJS			=	$(SRC:%.c=$(OBJ_DIR)/%.o)
 
 $(OBJ_DIR)/%.o : %.c
 	@mkdir -p $(@D)
-	$(COMPILE.c) $< -o $@
+	$(COMPILE.c) -I/usr/include -Imlx_linux -O3 $< -o $@
 
 all: $(NAME)
 
 $(NAME): 	$(LIBFT) $(OBJS)
 			@echo "$(YELLOW) ...Creating Cube3D... $(WHITE)\n"
 			$(CC) $(CFLAGS) $(OBJS) $(INC_READLINE)\
-			 $(READLINE_FLAGS) $(LIBFT) -o $(NAME)
+			 $(READLINE_FLAGS) $(LIBFT) -Lmlx_linux -lmlx_Linux\
+			 -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 			@echo "\n$(LIGHT_GRAY)---------- MiniShell Ready ------------\n"
 
 .SILENT:
