@@ -49,6 +49,8 @@ void    ft_init_data(t_data *data)
     return ;
 }
 
+
+
 static int  ft_check_args(const int argc, const char **argv)
 {
     int     i;
@@ -78,25 +80,10 @@ static int  ft_check_args(const int argc, const char **argv)
     return (EXIT_SUCCESS);
 }
 
-void    get_screen_size(t_data *data)
+void closewin(t_data *data)
 {
-    Display *display;
-    Screen  *screen;
-
-    display = XOpenDisplay(NULL);
-    if (display == NULL)
-    {
-        perror("Can't open fullscreen: ");
-        data->game->win_size_x = 800;
-        data->game->win_size_y = 800;
-        return;
-    }
-    screen = DefaultScreenOfDisplay(display);
-    data->game->win_size_x = screen->width;
-    data->game->win_size_y = screen->height;
-    XCloseDisplay(display);
+    ft_exit(data, "Finish Game");
 }
-
 void    start_game(t_data *data)
 {
     t_game  *aux;
@@ -105,10 +92,12 @@ void    start_game(t_data *data)
     aux->mlx = mlx_init();
     if (!aux->mlx)
         ft_exit(data, "Error in mlx_init");
-    get_screen_size(data);
+    if (mlx_get_screen_size(aux->mlx, &aux->win_size_x, &aux->win_size_y))
+        ft_exit(data, "Error in mlx_get_screen_size");
     aux->mlx_window = mlx_new_window(aux->mlx, aux->win_size_x, aux->win_size_y, "Cub3d");
     if (!aux->mlx_window)
         ft_exit(data, "Error in mlx_window");
+    
     mlx_loop(aux->mlx);
 }
 

@@ -20,7 +20,6 @@
 # include "../mlx_linux/mlx.h"
 # include "libft/libft.h"
 # include <stdint.h>
-# include <X11/Xlib.h>
 
 # define PI 3.14159265359
 
