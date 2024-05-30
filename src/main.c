@@ -6,7 +6,7 @@
 /*   By: daparici <daparici@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 00:53:00 by Ardeiro           #+#    #+#             */
-/*   Updated: 2024/05/30 23:32:48 by daparici         ###   ########.fr       */
+/*   Updated: 2024/05/30 23:55:35 by daparici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,14 @@ int	closewin(t_data *data)
 	return (0);
 }
 
+int	key_select(int keycode, t_data *data)
+{
+	printf("keycode: %i\n", keycode);
+	if (keycode == 65307)
+		ft_exit(data, "Finish Game");
+	return (0);
+}
+
 void	start_game(t_data *data)
 {
 	t_game	*aux;
@@ -101,6 +109,7 @@ void	start_game(t_data *data)
 	if (!aux->mlx_window)
 		ft_exit(data, "Error in mlx_window");
 	mlx_hook(aux->mlx_window, 17, 1L << 17, closewin, data);
+	mlx_key_hook(aux->mlx_window, key_select, data);
 	mlx_loop(aux->mlx);
 }
 
