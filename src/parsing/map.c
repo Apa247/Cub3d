@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daparici <daparici@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/07 13:31:48 by Ardeiro           #+#    #+#             */
-/*   Updated: 2024/05/30 21:38:56 by daparici         ###   ########.fr       */
+/*   Created: 2024/05/07 13:31:48 by jolopez-          #+#    #+#             */
+/*   Updated: 2024/07/02 14:30:56 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static void	ft_upper_map_line(t_data *data, const char *line, \
-			const int start, const int end)
+/*	Cheks the upper map line, if there are only 1s and 0s.	*/
+static void	ft_upper_map_line(t_data *data, const char *line,
+				const int start, const int end)
 {
 	int	i;
 
@@ -34,8 +35,9 @@ static void	ft_upper_map_line(t_data *data, const char *line, \
 	return ;
 }
 
-static void	ft_bottom_map_line(t_data *data, const char *line, \
-			const int start, const int end)
+/*	Cheks the bottom map line, if there are only 1s and 0s.	*/
+static void	ft_bottom_map_line(t_data *data, const char *line,
+				const int start, const int end)
 {
 	int	i;
 
@@ -58,8 +60,11 @@ static void	ft_bottom_map_line(t_data *data, const char *line, \
 	return ;
 }
 
+/*	Processes a single line of the map and verifies its edges to be
+	sure the boundaries are closed. If so, the line is saved to the
+	map.	*/
 static void	ft_map_line(t_data *data, const char *line,
-			const int start, const int end)
+				const int start, const int end)
 {
 	int	i;
 
@@ -75,9 +80,9 @@ static void	ft_map_line(t_data *data, const char *line,
 			ft_exit(data, "Error: Invalid edge in map!!\n");
 		while (line[i] != ' ' && line[i] != '\n')
 		{
-			if (ft_horizontal_left_last(line, i) || \
-				ft_horizontal_right_last(line, i) || \
-				!ft_vertical_last(data, i))
+			if (ft_horizontal_left_last(line, i)
+				|| ft_horizontal_right_last(line, i)
+				|| !ft_vertical_last(data, i))
 				ft_exit(data, "Error: Invalid edge in map!!\n");
 			data->map[data->map_height - 1][i] = line[i];
 			i++;
@@ -87,8 +92,10 @@ static void	ft_map_line(t_data *data, const char *line,
 	return ;
 }
 
-static void	ft_read_map(t_data *data, t_list **temp, const int start, \
-			const int end)
+/*	Reads the complete map line by line and save it to the char **map
+	main structure. */
+static void	ft_read_map(t_data *data, t_list **temp, const int start,
+				const int end)
 {
 	char	*line;
 
@@ -113,6 +120,8 @@ static void	ft_read_map(t_data *data, t_list **temp, const int start, \
 	return ;
 }
 
+/*	Checks the line to find the beginning of the map, it means if the
+	first non-space character is an 1.*/
 int	ft_check_if_map(t_data *data, t_list **temp)
 {
 	int		i;

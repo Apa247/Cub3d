@@ -4,13 +4,13 @@
 
 
 
-NO	./assets/BrickMoss.png
+NO	assets/BrickMoss.xpm
 
-SO	../assets/Tile.png
+SO	assets/Caillou.xpm
 
-WE	 ../assets/Copper.png
+WE	 assets/Copper.xpm
 
-EA	 ../assets/WoodDark.png
+EA	 assets/WoodDark.xpm
 
 F 255,100,0
 

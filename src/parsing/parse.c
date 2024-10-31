@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daparici <daparici@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolopez- <jolopez-@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/03 19:32:40 by Ardeiro           #+#    #+#             */
-/*   Updated: 2024/05/30 21:39:41 by daparici         ###   ########.fr       */
+/*   Created: 2024/05/03 19:32:40 by jolopez-          #+#    #+#             */
+/*   Updated: 2024/07/03 12:40:15 by jolopez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
+/*	Reads the file and save all the lines in a list.	*/
 static int	ft_read_file(t_data *data, char *map_path)
 {
 	int		fd;
@@ -32,11 +33,15 @@ static int	ft_read_file(t_data *data, char *map_path)
 		ft_lstadd_back(&(data->file), new_line);
 		line = get_next_line(fd);
 	}
-	//ft_print_file(data->file);
 	close(fd);
 	return (EXIT_SUCCESS);
 }
 
+/*	Make some cheks in the file lines;
+	 -> Checks  if some texture is defined more than once.
+	 -> Checks if there are more than one map in the file.
+	 -> Checks if the textures are ok.
+	 -> */
 static int	ft_check_lines(t_data *data, const char *line, t_list **temp)
 {
 	if (ft_check_textures_dup(data, line) == EXIT_FAILURE)
@@ -49,13 +54,13 @@ static int	ft_check_lines(t_data *data, const char *line, t_list **temp)
 		perror("Error: More than one map in file!!\n");
 		return (EXIT_FAILURE);
 	}
-	else if (ft_check_texture(data, line, "NO") == EXIT_FAILURE && \
-		ft_check_texture(data, line, "SO") == EXIT_FAILURE && \
-		ft_check_texture(data, line, "EA") == EXIT_FAILURE && \
-		ft_check_texture(data, line, "WE") == EXIT_FAILURE && \
-		ft_check_floor(data, line) == EXIT_FAILURE && \
-		ft_check_ceiling(data, line) == EXIT_FAILURE && \
-		ft_check_if_map(data, temp) == EXIT_FAILURE)
+	else if (ft_check_texture(data, line, "NO") == EXIT_FAILURE
+		&& ft_check_texture(data, line, "SO") == EXIT_FAILURE
+		&& ft_check_texture(data, line, "EA") == EXIT_FAILURE
+		&& ft_check_texture(data, line, "WE") == EXIT_FAILURE
+		&& ft_check_floor(data, line) == EXIT_FAILURE
+		&& ft_check_ceiling(data, line) == EXIT_FAILURE
+		&& ft_check_if_map(data, temp) == EXIT_FAILURE)
 	{
 		perror("Error: Invalid line!!\n");
 		return (EXIT_FAILURE);
@@ -63,9 +68,11 @@ static int	ft_check_lines(t_data *data, const char *line, t_list **temp)
 	return (EXIT_SUCCESS);
 }
 
+/*	Returns EXIT_SUCESS if there are no characters in a line (but 
+	spaces). */
 int	ft_empty_line(const char *line)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (ft_is_space(line[i]))
@@ -75,16 +82,21 @@ int	ft_empty_line(const char *line)
 	return (EXIT_SUCCESS);
 }
 
+/* Main function for parsing; it calls to the functions in charge 
+	of read the .cub file, then the function to chesk the lines. 
+	Parsing will save:
+	 -> Map width and height.
+	 -> RGB valus for floor and ceiling.
+	 -> Paths to textures (north, east, south and west, they have to
+	 	be different, they can not be repeated ones!).	
+	 -> Map (a char **map).	*/
 int	ft_parsing(t_data *data, char *map_path)
 {
 	char	*line;
 	t_list	*temp;
 
 	if (ft_read_file(data, map_path))
-	{
-		perror("Error: File can't be readed!!\n");
-		return (EXIT_FAILURE);
-	}
+		ft_exit(data, "Error: File can't be readed!!\n");
 	temp = data->file;
 	line = (char *)temp->content;
 	while (temp->next)
@@ -100,6 +112,7 @@ int	ft_parsing(t_data *data, char *map_path)
 		else
 			break ;
 	}
-	ft_print_info(data);
+	if (TEST_FLAG == 1)
+		ft_print_info(data);
 	return (EXIT_SUCCESS);
 }

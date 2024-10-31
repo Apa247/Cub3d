@@ -1,18 +1,15 @@
 
 
+NO	assets/BrickMoss.xpm
 
-             
-NO	./assets/BrickMoss.png
+SO	assets/Caillou.xpm
 
-SO	 ./assets/Caillou.png
+WE	 assets/Copper.xpm
 
-WE	  ./assets/Copper.png
+EA	 assets/WoodDark.xpm
 
-EA	 ./assets/StoneDark.png
-
-F 0,0,255
-
-C 0,255,0
+F 203,134,101
+C 153,204,255
 
 																														
 11111111111111111111111111111111

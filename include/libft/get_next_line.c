@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line.h"
 
 /*	This function copies n characters from src to dest and returns a pointer 
 	to dest.	*/

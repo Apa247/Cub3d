@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include<stdio.h>
+#include <stdio.h>
 
 static char	*ft_alloc_mem(char *str, char const *s,
 	unsigned int start, size_t len)

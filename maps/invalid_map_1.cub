@@ -1,17 +1,16 @@
-NO	../assets/tile.png
+NO	assets/BrickMoss.xpm
 
-SO	../assets/tile.png
+SO	assets/BrickMoss.xpm
+WE	assets/BrickMoss.xpm
 
-WE	../assets/tile1.png
-
-EA	../assets/tile.png
+EA	assets/BrickMoss.xpm
 
 F 255,100,0
 
 C 225,30,0
 
 11111111111111111111
-100000000000000000N1
+00000000000000000N1
 10000000000000000001
 10000000000000000001
 10000000000000000001

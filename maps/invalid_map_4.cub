@@ -1,22 +1,13 @@
                         
 
 
+NO	assets/BrickMoss.xpm
 
+SO	assets/Caillou.xpm
 
+WE	 assets/Copper.xpm
 
-NO	../assets/BrickMoss.png
-
-
-
-SO	 ../assets/Tile.png
-
-
-
-WE	  ../assets/Copper.png
-
-
-
-EA	 ../assets/WoodDark.png
+EA	 assets/WoodDark.xpm
 
 
 
